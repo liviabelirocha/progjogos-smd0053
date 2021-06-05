@@ -34,6 +34,7 @@ opponent = pg.Rect(PADDLE_WIDTH, SCREEN_HEIGHT/2 - PADDLE_HEIGHT/2, PADDLE_WIDTH
 
 #Sounds
 snd_wall_hit = set_sound('assets/wall_hit.wav')
+snd_paddle_hit = set_sound('assets/paddle_hit.wav')
 
 #Game Loop
 while True:
@@ -52,6 +53,10 @@ while True:
     if ball.bottom >= SCREEN_HEIGHT or ball.top <= 0 :
         BALL_SPEED_Y *= -1
         snd_wall_hit.play()
+
+    if ball.colliderect(player) or ball.colliderect(opponent):
+        BALL_SPEED_X *= -1.03
+        snd_paddle_hit.play()
 
     # Drawing objects
     screen.fill(RGB_BLACK)

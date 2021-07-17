@@ -1,5 +1,3 @@
-import pygame as pg
-
-class Entity:
+class Entity():
     def update(self):
         pass
